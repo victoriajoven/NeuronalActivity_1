@@ -34,8 +34,8 @@ df.info() #display in table form
 # Separate INPUT (X) and OUTPUT (y)
 # Output must be numerical real numerical
 # ******************
-y = df["SalePrice"]
-X = df.drop(columns=["SalePrice"])
+y = df["v1"]
+X = df.drop(columns=["v1"])
 
 # Identify categorical and numerical features. Review this item
 # ****************************
@@ -56,12 +56,12 @@ def detect_outliers_IQR(column):
     return (column < lower) | (column > upper)
 
 outliers = detect_outliers_IQR(y)
-print("\nOutliers in SalePrice:", outliers.sum())
+print("\nOutliers in v1:", outliers.sum())
 
-# Optional graph of SalePrice or other values distribution
+# Optional graph of v1 or other values distribution
 plt.figure(figsize=(7,4))
 sns.histplot(y, kde=True)
-plt.title("SalePrice Distribution")
+plt.title("v1 Distribution")
 plt.show()
 
 # ----------------------------------------------------------
