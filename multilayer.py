@@ -45,9 +45,11 @@ class Multilayer:
             #fill with zero files, columns 1 to 
             #pending review TO DO
             self.d_w.append()
-            #self.d_theta.append()
-            #self.d_w_prev.append()
-            #self.d_theta_prev.append()
+            self.d_w.append(np.zeros((n[l], n[l-1])))
+            self.d_theta.append(np.zeros(n[l]))
+            self.d_w_prev.append(np.zeros((n[l], n[l-1])))
+            self.d_theta_prev.append(np.zeros(n[l]))# porque tiene un valor menos
+
 
         # 10) Función de activación usada en la entrada
         self.fact = fact
