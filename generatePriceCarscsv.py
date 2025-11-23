@@ -19,7 +19,7 @@ with open(filename, mode='w', newline='') as csv_file:
     
     # Escribir cabecera
     writer.writerow([
-        "idRegistro", "manufacturer", "color", "fuel_type", "year",
+        "manufacturer", "color", "fuel_type", "year",
         "consumptionliters", "doors", "base_price", "gps_price",
         "leather_seats_price", "sport_package_price", "safety_package_price",
         "CO_Emissions"
@@ -50,24 +50,37 @@ with open(filename, mode='w', newline='') as csv_file:
         gps_price = round(random.uniform(500, 1500), 2)        
         sport_package_price = round(random.uniform(500, 1500), 2)
         safety_package_price = round(random.uniform(500, 1500), 2)
-        
+        co_emissions = 0.0
         # Emisiones CO2
         if fuel_type == "electric":
             co_emissions = 0.0
         elif fuel_type == "hybrid":
-             #if consumption  menor o igual 6:
-            co_emissions = round(random.uniform(20, 65), 4)
-            #if consumption igual o mayor a 6
-            co_emissions = round(random.uniform(66, 90), 4)
+             if consumption  <= 6 :
+             #si el año de fabricación es menor a 
+               if year > 2022: 
+                co_emissions = round(random.uniform(20, 40), 4)
+               else:
+                co_emissions = round(random.uniform(41, 65), 4)
+             else:
+               if year > 2022:  
+                co_emissions = round(random.uniform(66, 78), 4)
+               else:
+                co_emissions = round(random.uniform(79, 90), 4)
         else:  # gasoline
-            #if consumption  menor o igual 7.5:
-            co_emissions = round(random.uniform(100, 170), 4)
-             #if consumption  mayor a  7.5:
-            co_emissions = round(random.uniform(171, 240), 4)
+            if consumption  <= 7.5 :
+              if year > 2022:
+               co_emissions = round(random.uniform(100, 135), 4)
+              else: 
+               co_emissions = round(random.uniform(136, 170), 4)
+            else:
+              if year > 2022:
+               co_emissions = round(random.uniform(171, 205), 4)
+              else: 
+               co_emissions = round(random.uniform(206, 240), 4)
         
         # Escribir fila
         writer.writerow([
-            i, manufacturer, color, fuel_type, year,
+            manufacturer, color, fuel_type, year,
             consumption, doors, base_price, gps_price,
             sport_package_price, safety_package_price,
             co_emissions
