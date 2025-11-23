@@ -16,7 +16,7 @@ import seaborn as sns
 # File train.csv downloaded from Kaggle recogido de moodle
 #*****************************************
 
-df = pd.read_csv("C:\\Users\\victo\\Documents\\masterciberseguridad\\secondyear\\Neuronal\\Code\\train.csv")
+df = pd.read_csv("C:\\Users\\victo\\Documents\\masterciberseguridad\\secondyear\\Neuronal\\Code\\PriceCars.csv")
 
 print("Dataset head:", df.shape)
 print(df.head())
@@ -34,8 +34,16 @@ df.info() #display in table form
 # Separate INPUT (X) and OUTPUT (y)
 # Output must be numerical real numerical
 # ******************
-y = df["v1"]
-X = df.drop(columns=["v1"])
+df['CO_Emissions'] = (
+    df['CO_Emissions']
+    .astype(str)
+    .str.replace(',', '.', regex=False)
+    .str.strip()
+)
+
+df['CO_Emissions'] = pd.to_numeric(df['CO_Emissions'], errors='coerce')
+y = df["CO_Emissions"]
+X = df.drop(columns=["CO_Emissions"])
 
 # Identify categorical and numerical features. Review this item
 # ****************************
@@ -56,16 +64,11 @@ def detect_outliers_IQR(column):
     return (column < lower) | (column > upper)
 
 outliers = detect_outliers_IQR(y)
-print("\nOutliers in v1:", outliers.sum())
+print("\nOutliers in CO_Emissions:", outliers.sum())
 
-# Optional graph of v1 or other values distribution
-plt.figure(figsize=(7,4))
-sns.histplot(y, kde=True)
-plt.title("v1 Distribution")
-plt.show()
 
 # ----------------------------------------------------------
-# 6. Preprocessing pipeline
+# Preprocessing pipeline
 # Includes:
 # - Imputation (handled internally by OneHotEncoder & StandardScaler)
 # - Encoding categorical variables
@@ -102,10 +105,10 @@ print("X_test_pre:", X_test_pre.shape)
 # Save the processed datasets (required in the assignment)
 # the first have to be 80% and other 20%
 # **************************
-np.save("X_train_preprocessed.npy", X_train_pre)
-np.save("X_test_preprocessed.npy", X_test_pre)
-np.save("y_train.npy", y_train)
-np.save("y_test.npy", y_test)
+np.save("X_train_preprocessed.npy", X_train_pre)#values to train the neural network
+np.save("X_test_preprocessed.npy", X_test_pre)#values to evaluate the neural network
+np.save("y_train.npy", y_train)#values Co2 use por learn
+np.save("y_test.npy", y_test)#values CO2 for check
 
 print("\nSuccessfully!")
 entrada = input("END")
