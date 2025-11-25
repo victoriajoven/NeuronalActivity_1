@@ -4,11 +4,11 @@ import numpy as np
 # CARGA DE DATOS PREPROCESADOS
 
 
-X_train = np.load("A1_VJoven/data/processed/X_train_preprocessed.npy")
-X_test  = np.load("A1_VJoven/data/processed/X_test_preprocessed.npy")
+X_train = np.load("data/processed/X_train_preprocessed.npy")
+X_test  = np.load("data/processed/X_test_preprocessed.npy")
 
-y_train = np.load("A1_VJoven/data/learn/y_train.npy")
-y_test  = np.load("A1_VJoven/data/check/y_test.npy")
+y_train = np.load("data/learn/y_train.npy")
+y_test  = np.load("data/check/y_test.npy")
 
 print("Shapes:")
 print("X_train:", X_train.shape)

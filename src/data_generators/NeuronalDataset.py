@@ -100,10 +100,10 @@ print("X_test_pre:", X_test_pre.shape)
 # Save the processed datasets (required in the assignment)
 # the first have to be 80% and other 20%
 # **************************
-np.save("A1_VJoven\\data\\processed\\X_train_preprocessed.npy", X_train_pre)   #values to train the neural network
-np.save("A1_VJoven\\data\\processed\\X_test_preprocessed.npy", X_test_pre)     #values to evaluate the neural network
-np.save("A1_VJoven\\data\\learn\\y_train.npy", y_train)                        #values Co2 use for learn
-np.save("A1_VJoven\\data\\check\\y_test.npy", y_test)                          #values CO2 for check
+np.save("data\\processed\\X_train_preprocessed.npy", X_train_pre)   #values to train the neural network
+np.save("data\\processed\\X_test_preprocessed.npy", X_test_pre)     #values to evaluate the neural network
+np.save("data\\learn\\y_train.npy", y_train)                        #values Co2 use for learn
+np.save("data\\check\\y_test.npy", y_test)                          #values CO2 for check
 
 print("\nSuccessfully!")
 entrada = input("END")
