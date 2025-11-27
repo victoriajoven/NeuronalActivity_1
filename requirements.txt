@@ -8,3 +8,5 @@ setuptools
 ipykernel
 jupyterlab
 notebook
+tensorflow
+keras
