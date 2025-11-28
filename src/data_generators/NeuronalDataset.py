@@ -1,5 +1,4 @@
 # DATA SELECTION, ANALYSIS AND PREPROCESSING
-# Dataset used with House Prices is pending for features Kaggle
 
 import pandas as pd
 import numpy as np
@@ -9,7 +8,7 @@ from sklearn.compose import ColumnTransformer
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# LOAD DATASET is pending for determante features
+# LOAD DATASET is pending for determinate features
 #*****************************************
 df = pd.read_csv("data\\raw\\PriceCars.csv")
 
